@@ -29,7 +29,7 @@ public class Card {
         if (suit.charAt(suit.length()-1) !='s')
             suit = suit + "s";
         //validate that the suit is Hearts, Diamonds, Spades or Clubs
-        List<String> validSuits = Arrays.asList("hearts","diamonds","spades","clubs");
+        List<String> validSuits = getValidSuits();
         //test if the argument is in the list of valid suits
         if (validSuits.contains(suit))
             this.suit =suit;
@@ -38,21 +38,32 @@ public class Card {
 
         this.suit = suit;
     }
-
     public String getFaceName() {
         return faceName;
     }
+   /*
+   This method returns the valid Suits of a Card object
+    */
+    public static List<String> getValidSuits(){
+        return Arrays.asList("hearts","diamonds","spades","clubs");
+    }
+
 
     public void setFaceName(String faceName) {
-        List<String> validFaceNames =
-                Arrays.asList("2","3","4","5","6","7","8","9","10","jack","queen","king","ace");
+        List<String> validFaceNames = getFaceNames();
         faceName = faceName.toLowerCase();
         if (validFaceNames.contains(faceName))
             this.faceName =faceName;
         else
             throw new IllegalArgumentException(faceName + " is not valid, choose from: " + validFaceNames);
     }
-
+    /*
+    This Method returns the valid FaceNames
+     */
+public static List<String> getFaceNames(){
+        return
+                Arrays.asList("2","3","4","5","6","7","8","9","10","jack","queen","king","ace");
+}
     /**
      * This method returns the colour of the suit. Red for diamonds and hearts, black for clubs and spades
      * @return "red" or "black"
