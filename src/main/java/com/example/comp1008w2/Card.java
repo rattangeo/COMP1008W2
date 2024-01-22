@@ -1,5 +1,7 @@
 package com.example.comp1008w2;
 
+import javafx.scene.image.Image;
+
 import java.util.Arrays;
 import java.util.List;
 
@@ -95,6 +97,14 @@ public static List<String> getFaceNames(){
     @Override
     public String toString(){
         return faceName + " of " + suit;
+    }
+
+    /**
+     * This method returns an Image object to represent the Card
+     */
+    public Image getImage(){
+        String imageName = "images/" + faceName + "_of_" + suit+".png";
+        return new Image(Card.class.getResourceAsStream(imageName));
     }
 
 }
